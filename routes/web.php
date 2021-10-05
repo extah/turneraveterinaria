@@ -41,7 +41,10 @@ Route::group(array('prefix' => 'recibodesueldo'), function(){
 
 });
 
+Route::group(array('prefix' => 'historiaclinica'), function(){
+	Route::get('/',	'historiaclinica\HistoriaClinicaController@index')->name('historiaclinica.index');
 
+});
 
 
 Route::group(array('prefix' => 'nuevoTurno'), function(){
