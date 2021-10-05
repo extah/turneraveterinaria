@@ -1,0 +1,16 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/piezas/index.css": "/css/piezas/index.css",
+    "/css/layouts/myapp.css": "/css/layouts/myapp.css",
+    "/css/layouts/footer.css": "/css/layouts/footer.css",
+    "/css/layouts/headermain.css": "/css/layouts/headermain.css",
+    "/css/layouts/header.css": "/css/layouts/header.css",
+    "/css/home/cuix.css": "/css/home/cuix.css",
+    "/js/campanias/create.js": "/js/campanias/create.js",
+    "/js/campanias/success.js": "/js/campanias/success.js",
+    "/js/piezas/create.js": "/js/piezas/create.js",
+    "/js/piezas/index.js": "/js/piezas/index.js",
+    "/js/piezas/terceros.js": "/js/piezas/terceros.js",
+    "/js/popper.js": "/js/popper.js"
+}

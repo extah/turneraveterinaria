@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* HEADER */
+
+header {
+    width: 100vw;
+}
+
+header .__navbar .__navbar-2 ul li a {
+    font-weight: 700;
+    font-size: 15px;
+    transition: 0.1s;
+}
+
+header .__navbar .__navbar-2 ul li:active {
+    color: #04205f!important;
+}
+
+header .__navbar .__navbar-2 ul li a:hover {
+    color: #04205f!important;
+}
+
+header .__navbar .__navbar-2 .navbar-toggler, header .__navbar .__navbar-2 .navbar-toggler .__menu-mobile {
+    transition: 0.3s!important;
+}
+
+
+/* FIN HEADER */
+
+
+
+/* CONTENT HOME */
+
+.__content .__noticia-portada-home .__noticia {
+    background: rgb(128,129,133);
+    background: linear-gradient(90deg, rgba(128,129,133,1) 0%, rgba(182,182,182,1) 50%, rgba(255,255,255,1) 100%); 
+}
+
+.__botones-portada-home {
+    overflow: hidden!important;
+    box-sizing: border-box!important;
+}
+
+ 
+.__botones-portada-home a:hover {
+    border: 2px solid #04205f;
+}
+
+
+/* FIN CONTENT HOME */
+
+
+/* FOOTER */
+
+footer {
+    background-color: #58595B;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+footer .container ul li a:hover {
+    color: #04205f!important;
+}
+
+/* FIN FOOTER */
+
+
+
+/* Media Queries */
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    /* CSS */
+    
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+
+    header .__navbar .__navbar-1 img {
+        width: 150px;
+        height: 40;
+    }
+
+    header .__navbar .__navbar-2 .__menu-mobile ul li a {
+        margin: 5px 8px 5px 8px!important;
+        padding: 0!important;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+    /* CSS */
+    
+  }
