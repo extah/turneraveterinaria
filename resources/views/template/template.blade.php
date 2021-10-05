@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recibo de Sueldo Berisso</title>
+    <title>Turnera Veterinaria Berisso</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href='{{ asset("css/inicio.css") }}' rel="stylesheet">
@@ -44,10 +44,10 @@
 
                 @if (!$esEmp)
                   <li class="nav-item px-lg-2">
-                      <a class="nav-link active" aria-current="page" title="Iniciar Sesion" href="{{route('inicio.index')}}">Iniciar sesion</a>
+                      <a class="nav-link active" aria-current="page" title="Iniciar Sesion" href="{{route('inicio.index')}}">Nuevo Turno</a>
                   </li>
                   <li class="nav-item px-lg-2">
-                      <a class="nav-link active" aria-current="page" title="Recibos" href="{{route('empleado.indexget')}}">Ver Recibos</a>
+                      <a class="nav-link active" aria-current="page" title="Recibos" href="{{route('empleado.indexget')}}">Ver Turnos</a>
                   </li>
                 @endif  
                 @if ($esEmp)
