@@ -1,0 +1,43 @@
+.barrapaso-uno {
+    border-top: 18px solid #37BBED;
+    padding-top: 10px;
+}
+.barrapaso-dos {
+    border-top: 18px solid #D7DF23;
+    padding-top: 10px;
+}
+.barrapaso-tres {
+    border-top: 18px solid #9283BE;
+    padding-top: 10px;
+}
+body {
+    /* font-family: 'Encode Sans';font-size: 22px; */
+    font-size: 20px;
+}
+.uno {
+    background: #37BBED;
+}
+.dos {
+    background: #D7DF23;
+}
+.tres {
+    background: #9283BE;
+}
+.circulo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    float: left;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.card-body
+{
+    border:  solid #266fbb;
+    background-color:#f4faff;
+}

@@ -30,37 +30,49 @@ class NuevoTurnoController extends Controller
 
 	 
 	    $inicio = "";    
-	    $tarmites =  DB::select("SELECT tab_tramites.* FROM tab_tramites where desabilitar = 0 ORDER BY tab_tramites.tramite ASC");
+	    $barrios =  DB::select("SELECT barrios.* FROM barrios ORDER BY barrios.barrio ASC");
 		$status_error = false;
 		$esEmp = false;
-		// dd( $tarmites);
-    	return view('nuevoTurno.nuevoturno', compact('inicio','tarmites', 'status_error', 'esEmp'));
+		// dd( $barrios);
+    	return view('nuevoTurno.nuevoturno', compact('inicio','barrios', 'status_error', 'esEmp'));
     }
 
 	public function fechasIndex(Request $request){
 	    $inicio = "";  
 		$esEmp = false;  
 
-	    $id_tramite =  $request->select_tramite;
-		$tramite =  DB::select("SELECT tab_tramites.* FROM tab_tramites where id_tramite = $id_tramite");
-		$id_tramite_turno = $tramite[0]->id_tramite_turno;	
-		$nombretramite = $tramite[0]->tramite;
-		//dias que tienen turnos
+	    $id_barrio =  $request->select_barrio;
+		// dd($request);
+		$turnos =  DB::select("SELECT turnos.* FROM turnos where id_barrio = " . $id_barrio . " ORDER BY turnos.fecha DESC LIMIT 1 ");
+// dd($turnos);
+		// chequeo si hay fechas para el barrio	
 		
+		if(count($turnos) == 0)
+		{
+			$barrios =  DB::select("SELECT barrios.* FROM barrios ORDER BY barrios.barrio ASC");
+			$barrio_select = DB::select("SELECT barrios.* FROM barrios WHERE id = " . $id_barrio);
+			$message = "Por el momento no hay turnos disponibles para el barrio " . $barrio_select[0]->barrio;
+			$status_error = true;
+			$inicio = "";    
+			
+	
+			return view('nuevoTurno.nuevoturno', compact('inicio', 'barrios', 'message', 'status_error', 'esEmp'));
+		}
+		$barrio_select = DB::select("SELECT barrios.* FROM barrios WHERE id = " . $id_barrio);
+		$nombrebarrio = $barrio_select[0]->barrio;
+
 		$fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
 		$dateactual = $fecha_actual->format('Y/m/d');
-		$datefinal = substr($dateactual, 0, 5);
-		
-		//$datefinal = $datefinal . "31";
-		$anioActual = date("Y");
-		$mesActual = date("n");
-		$mesActual += 1;
-		$datefinal = $datefinal . $mesActual . '/';
-		$datefinal = $datefinal . cal_days_in_month(CAL_GREGORIAN, $mesActual, $anioActual);
-		// dd($datefinal);
 
+
+
+		$datefinal = $turnos[0]->fecha;
+		$timestamp = strtotime($datefinal);
+		$datefinal = date('Y/m/d', $timestamp);
+		// dd($dateactual . "  " . $datefinal);
+// dd("SELECT DISTINCT fecha FROM turnos WHERE libre = 1 AND id_barrio = " . $id_barrio . " AND fecha BETWEEN '" . $dateactual . "' AND '" . $datefinal . "' ORDER BY fecha ASC");
 		// SELECT DISTINCT fecha FROM `mm_turnos` WHERE libre = 1 AND id_tramite_turno = 1 AND fecha BETWEEN '2021/06/01' AND '2021/06/30' ORDER BY id_turno ASC
-		$diasDisponible =  DB::select("SELECT DISTINCT fecha FROM mm_turnos WHERE libre = 1 AND id_tramite_turno = " . $id_tramite_turno . " AND fecha BETWEEN '" . $dateactual . "' AND '" . $datefinal . "' ORDER BY fecha ASC");
+		$diasDisponible =  DB::select("SELECT DISTINCT fecha FROM turnos WHERE libre = 1 AND id_barrio = " . $id_barrio . " AND fecha BETWEEN '" . $dateactual . "' AND '" . $datefinal . "' ORDER BY fecha ASC");
 		// dd($diasDisponible);
 		
 		if(count($diasDisponible) == 0)
@@ -85,7 +97,7 @@ class NuevoTurnoController extends Controller
 
 		$status_error = false;
 		$esEmp = false;
-    	return view('nuevoTurno.nuevoturno2', compact('inicio','nombretramite', 'id_tramite', 'fechasDisp', 'status_error', 'esEmp'));
+    	return view('nuevoTurno.nuevoturno2', compact('inicio','nombrebarrio', 'id_barrio', 'fechasDisp', 'status_error', 'esEmp'));
     }
 
     public function indexprueba(Request $request){
