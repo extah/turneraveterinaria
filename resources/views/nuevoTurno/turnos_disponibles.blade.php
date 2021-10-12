@@ -20,7 +20,7 @@
 
 <style type="text/css">
  
- .btn_personalizado{
+ /* .btn_personalizado{
   text-decoration: none;
   padding: 10px;
   font-weight: 600;
@@ -29,7 +29,7 @@
   background-color: #1883ba;
   border-radius: 6px;
   border: 1px solid #0016b0;
-}
+} */
 .formItem{
   display: block;
   text-align: center;
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="my-2 pb-1 barrapaso-uno" id="barra1"></div>    
                     </div>
-                <div class="container col-4 mx-auto">
+                <div class="col col-sm-8 col-md-8 col-lg-8 col-xl-3 mx-auto">
 
                     <div class="form-group">
                         <label class="formItem" for="select_turno"> <b>Horario disponible</b></label>
@@ -164,42 +164,42 @@
                     </div>
                     <div class="col-md-4">
                         <label for="nom_animal" class="form-label"><b>Nombre</b></label>
-                        <input type="text" class="form-control" id="nom_animal" placeholder="ingrese el nombre de su mascota">
+                        <input type="text" class="form-control" id="nom_animal" placeholder="ingrese el nombre de su mascota" required>
                     </div>
                     <div class="col-md-2">
                         <label for="edad_animal" class="form-label"><b>Edad</b></label>
-                        <input type="number" class="form-control" id="edad_animal" placeholder="ingrese la edad">
+                        <input type="number" class="form-control" id="edad_animal" placeholder="ingrese la edad" required>
                     </div>
                     <div class="col-md-2">
                         <label for="sexo" class="form-label"><b>Sexo</b></label>
-                        <select id="sexo" class="form-select" onchange="showDiv('interes_sanitario', this)">
-                            <option selected>Elegir...</option>
+                        <select id="sexo" class="form-select" onchange="showDiv('interes_sanitario', this)" required>
+                            <option selected disabled value="">elegir...</option>
                             <option value="hembra">Hembra</option>
                             <option value="macho">Macho</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="vacuna_antirrabica" class="form-label"><b>Recibió vacuna antirrábica el último año</b></label>
-                        <select id="vacuna_antirrabica" class="form-select">
-                            <option selected>Elegir...</option>
-                            <option>SI</option>
-                            <option>NO</option>
+                        <select id="vacuna_antirrabica" class="form-select" required>
+                            
+                                    <option>NO</option>
+                                    <option>SI</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="vacuna_sextuple" class="form-label"><b>Recibió vacuna sextuple/triple el último año</b></label>
-                        <select id="vacuna_sextuple" class="form-select">
-                            <option selected>Elegir...</option>
-                            <option>SI</option>
-                            <option>NO</option>
+                        <select id="vacuna_sextuple" class="form-select" required>
+                            
+                                    <option>NO</option>
+                                    <option>SI</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="castrado" class="form-label"><b>Castrado</b></label>
-                        <select id="castrado" class="form-select">
-                            <option selected>Elegir...</option>
-                            <option>SI</option>
-                            <option>NO</option>
+                        <select id="castrado" class="form-select" required>
+                            
+                                    <option>NO</option>
+                                    <option>SI</option>
                         </select>
                     </div>
 
@@ -223,26 +223,26 @@
                             <h6>*Canino hembra</h6>
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Se cruzó alguna vez con algún macho intencionalmente o por accidente?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Quedó preñada alguna vez?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Tuvo crías?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
@@ -257,26 +257,26 @@
                             <h6>*Canino macho</h6>
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Dio servicio o lo cruzo alguna vez con una hembra?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>Si dio servicios, ¿Logró la preñez de la hembra?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Tuvo o tiene inflamación de testículos, se lame o se lastima la zona?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>    
                         </div>
@@ -285,10 +285,10 @@
                             <h6>*Canino sin importar sexo</h6>
                             <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Dificultad para caminar, dolor en la columna, se niega a subir escalones o a sillones o camas?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                             </div>     
                         </div>
@@ -300,18 +300,18 @@
                         <br>
                         <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿Es un animal comprado en un criadero?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                         </div> 
                         <div class="col-md-8">
                                 <label for="vacuna_sextuple" class="form-label"><b>¿El perro proviene o viajo alguna vez de otra provincia o pais?</b></label>
-                                <select id="vacuna_sextuple" class="form-select">
-                                    <option selected>Elegir...</option>
-                                    <option>SI</option>
+                                <select id="vacuna_sextuple" class="form-select" required>
+                                    
                                     <option>NO</option>
+                                    <option>SI</option>
                                 </select>
                         </div> 
                         <br>

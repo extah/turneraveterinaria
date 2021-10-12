@@ -2,26 +2,26 @@
 
 @section('css')
 
-            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-            <style type="text/css">
-              .a {
-                 color: #183a68;
-                 text-decoration: none;
-                 background-color: transparent;
-             }
-             .barrapaso-uno {
-                    border-top: 10px solid #37BBED;
-                    padding-top: 10px;
-                }
-                .uno {
-                    background: #37BBED;
-                }
-                body {
-                    /* font-family: 'Encode Sans';font-size: 22px; */
-                    font-size: 22px;
-                }
-             </style>
+    {{-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'> --}}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <style type="text/css">
+        .a {
+            color: #183a68;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .barrapaso-uno {
+            border-top: 10px solid #37BBED;
+            padding-top: 10px;
+        }
+        .uno {
+            background: #37BBED;
+        }
+        body {
+            font-family: 'Encode Sans';font-size: 22px;
+            font-size: 22px;
+        }
+    </style>
 @endsection             
 @section('content')
     <br>

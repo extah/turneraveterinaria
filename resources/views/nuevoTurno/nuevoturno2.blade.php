@@ -2,8 +2,8 @@
 
 @section('css')
 
-<link href="{{ asset('/css/turnero.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('/css/turnero.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet"> --}}
 <link rel="stylesheet" href="{{ asset('css/barrapasoYcirculo.css') }}">
 
 <link href='{{ asset("css/sweetalert.css") }}' rel="stylesheet">
@@ -13,10 +13,10 @@
 <link href="{{ asset('/assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
 <link href="{{ asset('/assets/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet"/>
 
-{{-- <link href="{{ asset('/css/datepickk.min.css') }}" rel="stylesheet"> --}}
+<link href="{{ asset('/css/datepickk.min.css') }}" rel="stylesheet">
 
 <style type="text/css">
- .btn_personalizado{
+ /* .btn_personalizado{
   text-decoration: none;
   padding: 10px;
   font-weight: 600;
@@ -25,24 +25,19 @@
   background-color: #1883ba;
   border-radius: 6px;
   border: 1px solid #0016b0;
-}
+} */
 .formItem{
   display: block;
   text-align: center;
   line-height: 150%;
-  /* font-size: .85em; */
 }
 
 </style>
 @endsection
 
 @section('content')
-<br><br>
+<br>
 <div class="container">
-		{{-- <button id="paso1" class="btn_personalizado"><b>1/3</b></button> --}}
-		{{-- <div class="d-flex justify-content-center">
-        	<h1 style="color:#428bca">Buscar turnos</h1>
-    	</div> --}}
 		<div class="container col-6 mx-auto">
             <div class="card text-black bg-info mb-3" style="max-width: 100rem;">
                 {{-- <div class="card-header">Header</div> --}}
@@ -84,7 +79,6 @@
 			</div>	
   		</div>
 </div>
-<br>
 <br>
 <!-- 
 <div class="container">
