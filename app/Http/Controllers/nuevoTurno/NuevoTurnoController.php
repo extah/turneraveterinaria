@@ -42,9 +42,8 @@ class NuevoTurnoController extends Controller
 		$esEmp = false;  
 
 	    $id_barrio =  $request->select_barrio;
-		// dd($request);
 		$turnos =  DB::select("SELECT turnos.* FROM turnos where id_barrio = " . $id_barrio . " ORDER BY turnos.fecha DESC LIMIT 1 ");
-// dd($turnos);
+
 		// chequeo si hay fechas para el barrio	
 		
 		if(count($turnos) == 0)
@@ -87,13 +86,11 @@ class NuevoTurnoController extends Controller
 		}
 		$fechasDisp = [];
 		foreach ($diasDisponible as $key => $fecha) {
-			// dd($fecha->fecha);
 			$fechastr = strtotime($fecha->fecha);
 			//Le das el formato que necesitas a la fecha
 			$fecha = date('d/m/Y',$fechastr);
 			array_push($fechasDisp,$fecha);
 		}
-		// dd($fechasDisp);
 
 		$status_error = false;
 		$esEmp = false;
@@ -636,7 +633,7 @@ class NuevoTurnoController extends Controller
 	//POST Emma
 	public function turnosDisponibles(Request $request){
  		// dd($request);
-		$id_tramite = $request->select_tramite;
+		$tipo = $request->select_tramite;
 		$fechaParam = $request->fecha_turno;
 		//Le pasas el string
 		// dd($fechaParam);
@@ -656,9 +653,9 @@ class NuevoTurnoController extends Controller
 		$date = $fecha_actual->format('Y/m/d');
 		$hora_actual =  $fecha_actual->format('H:i');
 
-		$tipoTramite = DB::select("SELECT * FROM tab_tramites WHERE id_tramite = ".$id_tramite);
+		$tipoTurno = DB::select("SELECT * FROM tipo_turnos WHERE tipo = ".$tipo);
 
-		// dd($tipoTramite);
+		// dd($tipoTurno);
 		// echo($fecha . "  " . $date);
 
 		$whereAmpliacion = "";
@@ -669,11 +666,10 @@ class NuevoTurnoController extends Controller
 			// dd($whereAmpliacion);
 		}
 
-		$turnos =  DB::select("SELECT * FROM mm_turnos WHERE id_tramite_turno = ".$tipoTramite[0]->id_tramite_turno." and libre = 1 AND fecha = '".$fecha."' ".$whereAmpliacion);
+		$turnos =  DB::select("SELECT * FROM turnos WHERE id_tipo_turno = ".$tipoTurno[0]->tipo." and libre = 1 AND fecha = '".$fecha."' ".$whereAmpliacion);
 		// dd($turnos);
 
-		$content= compact('turnos'); 
-
+		$content= compact('turnos');
 		$error = "0";
 
 		if(count($turnos) == 0)
@@ -691,7 +687,7 @@ class NuevoTurnoController extends Controller
 		//AGREGADO DE ERROR
 		// return compact('content');
 		$esEmp = false;
-		return view('nuevoTurno.turnos_disponibles', compact('turnos', 'esEmp', 'id_tramite'));
+		return view('nuevoTurno.turnos_disponibles', compact('turnos', 'esEmp', 'tipo'));
 
 		// return compact('content','error');
 	

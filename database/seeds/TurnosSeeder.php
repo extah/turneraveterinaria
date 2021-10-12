@@ -26,7 +26,7 @@ class TurnosSeeder extends Seeder
         $p = new Turnos();
         $p->id_animal = '1';
         $p->id_persona = null;
-        $p->id_tipo_turno = null;
+        $p->id_tipo_turno = 1;
         $p->id_barrio = 1;
         $p->fecha = date('Y-m-d H:i:s', strtotime('2021-10-15'));
         $p->hora = "08:00"; 
@@ -37,7 +37,7 @@ class TurnosSeeder extends Seeder
         $p = new Turnos();
         $p->id_animal = '1';
         $p->id_persona = null;
-        $p->id_tipo_turno = null;
+        $p->id_tipo_turno = 1;
         $p->id_barrio = 1;
         $p->fecha = date('Y-m-d H:i:s', strtotime('2021-10-15'));
         $p->hora = "09:00"; 
@@ -48,7 +48,7 @@ class TurnosSeeder extends Seeder
         $p = new Turnos();
         $p->id_animal = '1';
         $p->id_persona = null;
-        $p->id_tipo_turno = null;
+        $p->id_tipo_turno = 1;
         $p->id_barrio = 1;
         $p->fecha = date('Y-m-d H:i:s', strtotime('2021-10-15'));
         $p->hora = "10:00"; 
@@ -59,7 +59,7 @@ class TurnosSeeder extends Seeder
         $p = new Turnos();
         $p->id_animal = '1';
         $p->id_persona = null;
-        $p->id_tipo_turno = null;
+        $p->id_tipo_turno = 1;
         $p->id_barrio = 1;
         $p->fecha = date('Y-m-d H:i:s', strtotime('2021-10-15'));
         $p->hora = "11:00"; 

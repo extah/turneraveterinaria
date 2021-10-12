@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Barrio;
+
 class BarrioSeeder extends Seeder
 {
     /**

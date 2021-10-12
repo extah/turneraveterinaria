@@ -47,7 +47,7 @@ Route::group(array('prefix' => 'historiaclinica'), function(){
 });
 
 
-Route::group(array('prefix' => 'nuevoTurno'), function(){
+Route::group(array('prefix' => 'nuevoturno'), function(){
 
 		// Route::get('/t',	'nuevoTurnom\NuevoTurnoController@index');
 
@@ -59,8 +59,8 @@ Route::group(array('prefix' => 'nuevoTurno'), function(){
 		// Route::get('/fechaHasta/{id_tramite}',	'nuevoTurno\NuevoTurnoController@fechaHasta');
 		
 		Route::get('/disponibles/{id_tramite}/{fecha}',	'nuevoTurno\NuevoTurnoController@disponibles');
-		Route::post('/fechasDisponibles',	'nuevoTurno\NuevoTurnoController@fechasIndex');
-		Route::post('/turnosDisponibles',	'nuevoTurno\NuevoTurnoController@turnosDisponibles');
+		Route::post('/fechasdisponibles',	'nuevoTurno\NuevoTurnoController@fechasIndex');
+		Route::post('/turnosdisponibles',	'nuevoTurno\NuevoTurnoController@turnosDisponibles');
 		Route::post('/turnoConfirmado',	'nuevoTurno\NuevoTurnoController@turnoConfirmado');
 		Route::get('descargar_pdf/{id}/{nrodoc}',  	'boleta\BoletaController@imprimir_pdf');
 
@@ -82,7 +82,7 @@ Route::group(array('prefix' => 'nuevoTurno'), function(){
 
 	});
 
-    Route::group(array('prefix' => 'cancelarTurno'), function(){
+    Route::group(array('prefix' => 'cancelarturno'), function(){
         Route::get('/','anulaturno\AnulaTurnoController@index')->name('cancelarTurno.cancelar');
         Route::post('/cancelaTurnoBuscar','anulaturno\AnulaTurnoController@buscar_turno_cancelar')->name('cancelarTurno.buscarCancelar');
         // Route::get('/prueba','anulaturno\AnulaTurnoController@emma')->name('cancelarTurno.emma');

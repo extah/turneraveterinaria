@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-body text-light">
                         <p class="card-text">para obtener un nuevo turno para su mascota, presione " Buscar "</p>
-                        <a class="btn btn-success btn-circle btn-xl border-light" href="nuevoTurno" role="button"><h2>Buscar</h2></a>
+                        <a class="btn btn-success btn-circle btn-xl border-light" href="nuevoturno" role="button"><h2>Buscar</h2></a>
                     </div>
                 
                 </div>
@@ -56,8 +56,8 @@
                             <h3>Cancelar Turno</h3>
                         </div>
                         <div class="card-body text-light">
-                            <p class="card-text">para cancelar un turno para su mascota, presione " Cancelar "</p>
-                            <a class="btn btn-danger btn-circle btn-xl border-light" href="cancelarTurno" role="button"><h2>Cancelar</h2></a>
+                            <p class="card-text">para cancelar un turno de su mascota, presione " Cancelar "</p>
+                            <a class="btn btn-danger btn-circle btn-xl border-light" href="cancelarturno" role="button"><h2>Cancelar</h2></a>
                         </div>
                     </div>
             </div>

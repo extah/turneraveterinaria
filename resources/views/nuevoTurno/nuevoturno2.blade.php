@@ -37,25 +37,28 @@
 @endsection
 
 @section('content')
-
+<br><br>
 <div class="container">
-		{{-- <button id="paso1" class="btn_personalizado"><b>1/3</b></button>
-		<div class="d-flex justify-content-center">
+		{{-- <button id="paso1" class="btn_personalizado"><b>1/3</b></button> --}}
+		{{-- <div class="d-flex justify-content-center">
         	<h1 style="color:#428bca">Buscar turnos</h1>
     	</div> --}}
-		{{-- <hr> --}}
 		<div class="container col-6 mx-auto">
             <div class="card text-black bg-info mb-3" style="max-width: 100rem;">
                 {{-- <div class="card-header">Header</div> --}}
                 <div class="card-body text-Black text-center">
-                  <h4 class="card-title">Buscar turnos por barrio</h4>
+                  <h4 class="card-title">Seleccionar una Fecha</h4>
                 </div>                  
             </div>
             
         </div>
+		<br>
+		<div class="form-group">
+            <div class="my-2 pb-1 barrapaso-uno" id="barra1"></div>    
+        </div>
 		<div class="row justify-content-center align-items-center h-100">
     		<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-				<form id="demoForm" method="post" action="{{ url('nuevoTurno/turnosDisponibles')  }}" data-toggle="validator" role="form">
+				<form id="demoForm" method="post" action="{{ url('nuevoturno/turnosdisponibles')  }}" data-toggle="validator" role="form">
 					{{ csrf_field() }}
 
 					<div class="form-group">
@@ -81,6 +84,52 @@
 			</div>	
   		</div>
 </div>
+<br>
+<br>
+<!-- 
+<div class="container">
+		{{-- <button id="paso1" class="btn_personalizado"><b>1/3</b></button>
+		<div class="d-flex justify-content-center">
+        	<h1 style="color:#428bca">Buscar turnos</h1>
+    	</div> --}}
+		{{-- <hr> --}}
+		<div class="container col-6 mx-auto">
+            <div class="card text-black bg-info mb-3" style="max-width: 100rem;">
+                {{-- <div class="card-header">Header</div> --}}
+                <div class="card-body text-Black text-center">
+                  <h4 class="card-title">Buscar turnos por barrio</h4>
+                </div>                  
+            </div>
+            
+        </div>
+		<div class="row justify-content-center align-items-center h-100">
+    		<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+				<form id="demoForm" method="post" action="{{ url('nuevoturno/turnosdisponibles')  }}" data-toggle="validator" role="form">
+					{{ csrf_field() }}
+
+					<div class="form-group">
+                        <label class="formItem" for="select_barrio_nombre"> <b>Barrio</b></label>
+                        <input  class="form-control" type="text" name="select_barrio_nombre" id="select_barrio_nombre" value="{{ $nombrebarrio}}" disabled>
+					</div>
+                    <input id="select_barrio" name="select_tramite" type="hidden" value="{{ $id_barrio}}">
+
+					<div class="form-group">
+						<label class="formItem" for="fecha_turno"> <b>Fecha</b></label>
+						<input class="form-control" data-date-format="dd/mm/yyyy" id="fecha_turno" name="fecha_turno" required>
+					</div>
+					{{-- <div class="form-group">
+						<label class="formItem" for="fecha_turno"> <b>Fecha</b></label>
+						<input class="form-control" data-date-format="yyyy/mm/dd" id="fecha_turno" name="fecha_turno">
+					</div> --}}
+					<label>&nbsp;</label>
+	
+					<div class="row d-flex justify-content-center">
+						<input type="submit" class='btn btn-primary btn-lg' value="Buscar Turnos">
+					</div>
+				</form>
+			</div>	
+  		</div>
+</div> -->
 @endsection
 
 @section('js')
