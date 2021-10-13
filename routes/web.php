@@ -61,7 +61,7 @@ Route::group(array('prefix' => 'nuevoturno'), function(){
 		Route::get('/disponibles/{id_tramite}/{fecha}',	'nuevoTurno\NuevoTurnoController@disponibles');
 		Route::post('/fechasdisponibles',	'nuevoTurno\NuevoTurnoController@fechasIndex');
 		Route::post('/turnosdisponibles',	'nuevoTurno\NuevoTurnoController@turnosDisponibles');
-		Route::post('/turnoConfirmado',	'nuevoTurno\NuevoTurnoController@turnoConfirmado');
+		Route::post('/turnoconfirmado',	'nuevoTurno\NuevoTurnoController@turnoConfirmado');
 		Route::get('descargar_pdf/{id}/{nrodoc}',  	'boleta\BoletaController@imprimir_pdf');
 
 		Route::get('/save_turno',				'nuevoTurno\NuevoTurnoController@save_turno');

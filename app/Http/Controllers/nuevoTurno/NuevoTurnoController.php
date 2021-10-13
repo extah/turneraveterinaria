@@ -694,9 +694,38 @@ class NuevoTurnoController extends Controller
 	}
 	//POST Emma
 	public function turnoConfirmado(Request $request){
-		$id_tramite = $request->id_tramite;
-		$id_turno = $request->select_turno;
+
 		// dd($request);
+		$id_turno = $request->select_turno;
+		$apellido = $request->apellido;
+		$nombre = $request->nombre;
+		$edad = $request->edad;
+		$dni = $request->dni;
+		$ciudad = $request->ciudad;
+		$barrio = $request->barrio;
+		$cod_postal = $request->cod_postal;
+		$calle = $request->calle;
+		$numero = $request->numero;
+		$manzana = $request->manzana;
+		$name_especie_animal = $request->name_especie_animal;
+		$nom_animal = $request->nom_animal;
+		$edad_animal = $request->edad_animal;
+		$name_sexo_animal = $request->name_seso_animal;
+		$vacuna_antirrabica = $request->vacuna_antirrabica;
+		$vacuna_sextuple = $request->vacuna_sextuple;
+		$castrado = $request->castrado;
+		$cruzo_animal_hembra = $request->cruzo_animal_hembra;
+		$preñada_animal = $request->preñada_animal;
+		$crias_animal = $request->crias_animal;
+		$problema_parto = $request->problema_parto;
+		$cruzo_animal_macho = $request->cruzo_animal_macho;
+		$prenez_macho = $request->prenez_macho;
+		$inflamacion_macho = $request->inflamacion_macho;
+		$columna_animal = $request->columna_animal;
+		$criadero_animal = $request->criadero_animal;
+		$viajo_animal = $request->viajo_animal;
+		
+		dd($request);
 		$mm_turnos   = mm_turnos::get_registro($request->select_turno);
 		// dd($mm_turnos);
 		$comprobante = 0;

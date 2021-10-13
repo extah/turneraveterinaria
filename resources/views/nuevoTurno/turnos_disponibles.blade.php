@@ -48,17 +48,15 @@
                   <h4 class="card-title">Buscar turnos por barrio</h4>
                 </div>                  
             </div>
-            
         </div>
 
-        <form onsubmit="return miFuncion(this)" id="demoForm" class="needs-validation" novalidate method="post" action="{{ url('nuevoturno/turnoconfirmado')  }}">
+        <form id="demoForm" class="needs-validation" novalidate method="post" action="{{ url('nuevoturno/turnoconfirmado')  }}">
             {{ csrf_field() }}
             <div id="horario"  class="">
                     <div class="form-group">
                         <div class="my-2 pb-1 barrapaso-uno" id="barra1"></div>    
                     </div>
                 <div class="col col-sm-8 col-md-8 col-lg-8 col-xl-3 mx-auto">
-
                     <div class="form-group">
                         <label class="formItem" for="select_turno"> <b>Horario disponible</b></label>
                         <select name="select_turno" id="select_turno" class="form-control" required>
@@ -72,7 +70,6 @@
                         <input type="button" id="visibilityHidden" class='btn btn-primary btn-lg' value="Siguiente">
                     </div>
                 </div>
-                
             </div>
 
             <!-- <label>&nbsp;</label> -->
@@ -83,10 +80,11 @@
                         <div class="card-body text-Black text-center">
                             <h4 class="card-title">Ciudad: Berisso</h4>
                         </div>                  
-                    </div>
-                            
+                    </div>         
                 </div>
+
                 <p class="" style="">Por favor completá los siguientes datos. Todos los campos con * son obligatorios.</p>
+
                 <div class="form-group">
                     <div class="my-2 pb-1 barrapaso-uno" id="barra1"></div>    
                 </div>
@@ -98,50 +96,50 @@
                     </div>
                     <div class="col-md-6">
                         <label for="apellido" class="form-label"><b>Apellido</b></label>
-                        <input type="text" class="form-control" id="apellido" placeholder="ingrese su apellido" required>
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="ingrese su apellido" required>
                     </div>
                     <div class="col-md-6">
                         <label for="nombre" class="form-label"><b>Nombre</b></label>
-                        <input type="text" class="form-control" id="nombre" placeholder="ingrese su nombre" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="ingrese su nombre" required>
                     </div>
                     <div class="col-md-6">
                         <label for="edad" class="form-label"><b>Edad</b></label>
-                        <input type="number" class="form-control" id="edad" placeholder="ingrese su edad" required>
+                        <input type="number" class="form-control" id="edad" name="edad" placeholder="ingrese su edad" required>
                     </div>
                     <div class="col-md-6">
                         <label for="dni" class="form-label"><b>DNI</b></label>
-                        <input type="number" class="form-control" id="dni" placeholder="ingrese su dni" required>
+                        <input type="number" class="form-control" id="dni" name="dni" placeholder="ingrese su dni" required>
                     </div>
                     <div class="col-md-4">
                         <label for="ciudad" class="form-label"><b>Ciudad</b></label>
-                        <input type="text" class="form-control" id="ciudad" value="Berisso" readonly>
+                        <input type="text" class="form-control" id="ciudad" name="ciudad" value="Berisso" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="barrio" class="form-label"><b>Barrio</b></label>
-                        <select id="barrio" class="form-select" required>
+                        <select id="barrio" name="barrio" class="form-select" required>
                             <option selected disabled value="">elegir...</option>
                             <option>...</option>
                         </select>
                     </div>
                     <div class="col-md-2">
                         <label for="cod_postal" class="form-label"><b>Codigo Postal</b></label>
-                        <input type="text" class="form-control" id="cod_postal" value="1923" placeholder="ingrese su codigo postal" required>
+                        <input type="text" class="form-control" id="cod_postal" name="cod_postal" value="1923" placeholder="ingrese su codigo postal" required>
                     </div>
                     <div class="col-md-4">
                         <label for="calle" class="form-label"><b>Calle</b></label>
-                        <input type="text" class="form-control" id="calle" placeholder="ingrese su calle" required>
+                        <input type="text" class="form-control" id="calle" name="calle" placeholder="ingrese su calle" required>
                     </div>
-                    <div class="col-md-3">
-                        <label for="numero" class="form-label"><b>Número</b></label>
-                        <input type="text" class="form-control" id="numero" placeholder="ingrese su N° de domicilio" required>
+                    <div class="col-md-4">
+                        <label for="numero" class="form-label"><b>Número Domicilio</b></label>
+                        <input type="number" class="form-control" id="numero" name="numero" placeholder="ingrese su N° de domicilio" required>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <label for="barrio" class="form-label"><b>Barrio</b></label>
                         <input type="text" class="form-control" id="barrio" placeholder="ingrese su barrio" required>
-                    </div>
+                    </div> -->
                     <div class="col-md-2">
                         <label for="manzana" class="form-label"><b>Manzana</b></label>
-                        <input type="text" class="form-control" id="manzana" placeholder="ingrese su manzana" required>
+                        <input type="text" class="form-control" id="manzana" name="manzana" placeholder="ingrese su manzana" required>
                     </div>
 
                     <div class="form-group">    
@@ -154,7 +152,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="especie" class="form-label"><b>Especie</b></label>
-                        <select id="especie" class="form-select" onchange="showDiv('interes_sanitario', this)" required>
+                        <select id="especie" name="name_especie_animal" class="form-select" onchange="showDiv('interes_sanitario', this)" required>
                             <option selected disabled value="">elegir...</option>
                             <option value="ave">Ave</option>
                             <option value="canino">Canino</option>
@@ -164,15 +162,15 @@
                     </div>
                     <div class="col-md-4">
                         <label for="nom_animal" class="form-label"><b>Nombre</b></label>
-                        <input type="text" class="form-control" id="nom_animal" placeholder="ingrese el nombre de su mascota" required>
+                        <input type="text" class="form-control" id="nom_animal" name="nom_animal" placeholder="ingrese el nombre de su mascota" required>
                     </div>
                     <div class="col-md-2">
                         <label for="edad_animal" class="form-label"><b>Edad</b></label>
-                        <input type="number" class="form-control" id="edad_animal" placeholder="ingrese la edad" required>
+                        <input type="number" class="form-control" id="edad_animal" name="edad_animal" placeholder="ingrese la edad" required>
                     </div>
                     <div class="col-md-2">
-                        <label for="sexo" class="form-label"><b>Sexo</b></label>
-                        <select id="sexo" class="form-select" onchange="showDiv('interes_sanitario', this)" required>
+                        <label for="sexo_animal" class="form-label"><b>Sexo</b></label>
+                        <select id="sexo_animal" name="sexo_animal" class="form-select" onchange="showDiv('interes_sanitario', this)" required>
                             <option selected disabled value="">elegir...</option>
                             <option value="hembra">Hembra</option>
                             <option value="macho">Macho</option>
@@ -180,24 +178,21 @@
                     </div>
                     <div class="col-md-6">
                         <label for="vacuna_antirrabica" class="form-label"><b>Recibió vacuna antirrábica el último año</b></label>
-                        <select id="vacuna_antirrabica" class="form-select" required>
-                            
+                        <select id="vacuna_antirrabica" name="vacuna_antirrabica" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="vacuna_sextuple" class="form-label"><b>Recibió vacuna sextuple/triple el último año</b></label>
-                        <select id="vacuna_sextuple" class="form-select" required>
-                            
+                        <select id="vacuna_sextuple" name="vacuna_sextuple" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="castrado" class="form-label"><b>Castrado</b></label>
-                        <select id="castrado" class="form-select" required>
-                            
+                        <select id="castrado" name="castrado" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                         </select>
@@ -218,36 +213,33 @@
                         <div class="col-12">
                             <h4 style="color: #f74525"><u>Brucelosis</u></h4>
                         </div>
-                        <div class="row" id="canino_hembra" style="display: none">
+                        <div class="row" id="canino_hembra" name="canino_hembra" style="display: none">
                             <br>
                             <h6>*Canino hembra</h6>
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Se cruzó alguna vez con algún macho intencionalmente o por accidente?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="cruzo_animal_hembra" class="form-label"><b>¿Se cruzó alguna vez con algún macho intencionalmente o por accidente?</b></label>
+                                <select id="cruzo_animal_hembra" name="cruzo_animal_hembra" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Quedó preñada alguna vez?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="preñada_animal" class="form-label"><b>¿Quedó preñada alguna vez?</b></label>
+                                <select id="preñada_animal" name="preñada_animal" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                             </div>
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Tuvo crías?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="crias_animal" class="form-label"><b>¿Tuvo crías?</b></label>
+                                <select id="crias_animal" name="crias_animal" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
                                 <label for="problema_parto" class="form-label"><b>¿Tuvo problemas de parto, crías muertas o débiles y murieron luego de nacer?</b></label>
-                                <input type="text" class="form-control" id="problema_parto">
+                                <input type="text" class="form-control" id="problema_parto" name="problema_parto">
                             </div>
 
                         </div>
@@ -256,25 +248,22 @@
                             <br>
                             <h6>*Canino macho</h6>
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Dio servicio o lo cruzo alguna vez con una hembra?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="cruzo_animal_macho" class="form-label"><b>¿Dio servicio o lo cruzo alguna vez con una hembra?</b></label>
+                                <select id="cruzo_animal_macho" name="cruzo_animal_macho" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                             </div>    
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>Si dio servicios, ¿Logró la preñez de la hembra?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="prenez_macho" class="form-label"><b>Si dio servicios, ¿Logró la preñez de la hembra?</b></label>
+                                <select id="prenez_macho" name="prenez_macho" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                             </div>
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Tuvo o tiene inflamación de testículos, se lame o se lastima la zona?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="inflamacion_macho" class="form-label"><b>¿Tuvo o tiene inflamación de testículos, se lame o se lastima la zona?</b></label>
+                                <select id="inflamacion_macho" name="inflamacion_macho"class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
@@ -284,9 +273,8 @@
                         <div class="col-12">
                             <h6>*Canino sin importar sexo</h6>
                             <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Dificultad para caminar, dolor en la columna, se niega a subir escalones o a sillones o camas?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="columna_animal" class="form-label"><b>¿Dificultad para caminar, dolor en la columna, se niega a subir escalones o a sillones o camas?</b></label>
+                                <select id="columna_animal" name="columna_animal" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
@@ -295,21 +283,18 @@
                         <br>
                         <div class="col-12">
                             <h4 style="color: #f74525"><u>Leptospirosis</u></h4>
-        
                         </div>
                         <br>
                         <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿Es un animal comprado en un criadero?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="criadero_animal" class="form-label"><b>¿Es un animal comprado en un criadero?</b></label>
+                                <select id="criadero_animal" name="criadero_animal" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
                         </div> 
                         <div class="col-md-8">
-                                <label for="vacuna_sextuple" class="form-label"><b>¿El perro proviene o viajo alguna vez de otra provincia o pais?</b></label>
-                                <select id="vacuna_sextuple" class="form-select" required>
-                                    
+                                <label for="viajo_animal" class="form-label"><b>¿El perro proviene o viajo alguna vez de otra provincia o pais?</b></label>
+                                <select id="viajo_animal" name="viajo_animal" class="form-select" required>
                                     <option>NO</option>
                                     <option>SI</option>
                                 </select>
@@ -559,7 +544,7 @@ function miFuncion(a) {
 function showDiv(divId, element)
 {
     var varCanino = document.getElementById("especie").value;
-    var varSexo = document.getElementById("sexo").value;
+    var varSexo = document.getElementById("sexo_animal").value;
     var hembra = document.getElementById("canino_hembra");
     var macho = document.getElementById("canino_macho");
     var interes_sanitario =  document.getElementById("interes_sanitario");
