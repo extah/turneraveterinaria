@@ -103,4 +103,15 @@
 		@endif 
 </script>
 
+<script>
+    @if (Session::get('status_info'))
+            toastr.info( '{{ session('message') }}', 'Informar', {
+                // "progressBar": true,
+                "closeButton": true,
+                "positionClass": "toast-bottom-right",
+                "timeOut": "10000",
+            });   
+    @endif 
+</script>
+
 @endsection

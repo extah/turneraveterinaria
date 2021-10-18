@@ -15,6 +15,8 @@ use URL;
 use Redirect; 
 
 use App\mm_turnos;
+use App\Turnos;
+use App\Persona;
 use App\mm_turno_det;
 use App\mm_liquidaciones;
 use App\mm_causas;
@@ -42,47 +44,50 @@ class NuevoTurnoController extends Controller
 		$esEmp = false;  
 
 	    $id_barrio =  $request->select_barrio;
+		
 		$turnos =  DB::select("SELECT turnos.* FROM turnos where id_barrio = " . $id_barrio . " ORDER BY turnos.fecha DESC LIMIT 1 ");
 
-		// chequeo si hay fechas para el barrio	
+		// chequeo si el barrio contiene fechas disponible
 		
 		if(count($turnos) == 0)
 		{
 			$barrios =  DB::select("SELECT barrios.* FROM barrios ORDER BY barrios.barrio ASC");
 			$barrio_select = DB::select("SELECT barrios.* FROM barrios WHERE id = " . $id_barrio);
 			$message = "Por el momento no hay turnos disponibles para el barrio " . $barrio_select[0]->barrio;
-			$status_error = true;
+			$status_info = true;
 			$inicio = "";    
 			
-	
-			return view('nuevoTurno.nuevoturno', compact('inicio', 'barrios', 'message', 'status_error', 'esEmp'));
+			return redirect('nuevoturno')->with(['status_info' => $status_info, 'message' => $message, 'barrios' => $barrios,]);
+			// return view('nuevoTurno.nuevoturno', compact('inicio', 'barrios', 'message', 'status_error', 'esEmp'));
 		}
+		
 		$barrio_select = DB::select("SELECT barrios.* FROM barrios WHERE id = " . $id_barrio);
 		$nombrebarrio = $barrio_select[0]->barrio;
-
 		$fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
 		$dateactual = $fecha_actual->format('Y/m/d');
-
-
-
 		$datefinal = $turnos[0]->fecha;
 		$timestamp = strtotime($datefinal);
 		$datefinal = date('Y/m/d', $timestamp);
 		// dd($dateactual . "  " . $datefinal);
-// dd("SELECT DISTINCT fecha FROM turnos WHERE libre = 1 AND id_barrio = " . $id_barrio . " AND fecha BETWEEN '" . $dateactual . "' AND '" . $datefinal . "' ORDER BY fecha ASC");
-		// SELECT DISTINCT fecha FROM `mm_turnos` WHERE libre = 1 AND id_tramite_turno = 1 AND fecha BETWEEN '2021/06/01' AND '2021/06/30' ORDER BY id_turno ASC
+
 		$diasDisponible =  DB::select("SELECT DISTINCT fecha FROM turnos WHERE libre = 1 AND id_barrio = " . $id_barrio . " AND fecha BETWEEN '" . $dateactual . "' AND '" . $datefinal . "' ORDER BY fecha ASC");
 		// dd($diasDisponible);
 		
 		if(count($diasDisponible) == 0)
 		{
-			
-			$message = "Por el momento no hay turnos disponibles";
-			$status_error = true;
+			$message = "Por el momento no hay turnos disponibles para el barrio: " . $nombrebarrio;
+			$status_info = true;
 			$inicio = "";    
-			$tarmites =  DB::select("SELECT tab_tramites.* FROM tab_tramites where desabilitar = 0 ORDER BY tab_tramites.tramite ASC");
+			$barrios =  DB::select("SELECT barrios.* FROM barrios ORDER BY barrios.barrio ASC");
+			$status_error = false;
+			$esEmp = false;
+			// dd( $barrios);
+			return redirect('nuevoturno')->with(['status_info' => $status_info, 'message' => $message, 'barrios' => $barrios,]);
+
+			// $inicio = "";    
+			// $tarmites =  DB::select("SELECT tab_tramites.* FROM tab_tramites where desabilitar = 0 ORDER BY tab_tramites.tramite ASC");
 	
-			return view('nuevoTurno.nuevoturno', compact('inicio', 'tarmites', 'message', 'status_error', 'esEmp'));
+			// return view('nuevoTurno.nuevoturno', compact('inicio', 'tarmites', 'message', 'status_error', 'esEmp'));
 		}
 		$fechasDisp = [];
 		foreach ($diasDisponible as $key => $fecha) {
@@ -674,14 +679,22 @@ class NuevoTurnoController extends Controller
 
 		if(count($turnos) == 0)
 		{
-			$message = "NO HAY TURNOS PARA LA FECHA: " . $fecha;
-			$status_error = true;
-			$inicio = "";    
-			$tarmites =  DB::select("SELECT tab_tramites.* FROM tab_tramites where desabilitar = 0 ORDER BY tab_tramites.tramite ASC");
+			// $message = "NO HAY TURNOS PARA LA FECHA: " . $fecha;
+			// $status_error = true;
+			// $inicio = "";    
+			// $tarmites =  DB::select("SELECT tab_tramites.* FROM tab_tramites where desabilitar = 0 ORDER BY tab_tramites.tramite ASC");
 			
-			$esEmp = false;
+			// $esEmp = false;
 	
-			return view('nuevoTurno.nuevoturno', compact('inicio', 'tarmites', 'message', 'status_error', 'esEmp'));
+			// return view('nuevoTurno.nuevoturno', compact('inicio', 'tarmites', 'message', 'status_error', 'esEmp'));
+
+			$inicio = "";    
+			$message = "NO HAY TURNOS PARA LA FECHA: " . $fecha;
+			$barrios =  DB::select("SELECT barrios.* FROM barrios ORDER BY barrios.barrio ASC");
+			$status_error = false;
+			$esEmp = false;
+			// dd( $barrios);
+			return view('nuevoTurno.nuevoturno', compact('inicio','barrios', 'status_error', 'esEmp', 'message'));
 			
 		}
 		//AGREGADO DE ERROR
@@ -699,6 +712,8 @@ class NuevoTurnoController extends Controller
 		$id_turno = $request->select_turno;
 		$apellido = $request->apellido;
 		$nombre = $request->nombre;
+		$email = $request->email;
+		$telefono = $request->telefono;
 		$edad = $request->edad;
 		$dni = $request->dni;
 		$ciudad = $request->ciudad;
@@ -725,52 +740,64 @@ class NuevoTurnoController extends Controller
 		$criadero_animal = $request->criadero_animal;
 		$viajo_animal = $request->viajo_animal;
 		
-		dd($request);
-		$mm_turnos   = mm_turnos::get_registro($request->select_turno);
-		// dd($mm_turnos);
+		// dd($request);
+		$turno  = Turnos::get_registro($id_turno);
+		// dd($turno);
+
 		$comprobante = 0;
-		$nro_documento = $request->nro_documento;
-		$hora = $mm_turnos->hora;
-		$fecha = $mm_turnos->fecha;
+		$hora = $turno->hora;
+		$fecha = $turno->fecha;
 
-		$fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
-		$date123 = $fecha_actual->format('Y-m-d H:i:s');
+		// $fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
+		// $date123 = $fecha_actual->format('Y-m-d H:i:s');
 
-		if($mm_turnos->libre == 1){
+		if($turno->libre == 1){
 			// dd($mm_turnos->libre);
 			DB::beginTransaction();
 			try{
 
-				$mm_turnos->libre = 0;
-				$mm_turnos->Fecha_mov = date("Y-m-d H:i:s"); 
-				$mm_turnos->save();
+				$turno->libre = 0;
+				// $turno->Fecha_mov = date("Y-m-d H:i:s"); 
 
-				$mm_turno_det = new mm_turno_det;
-				$mm_turno_det->id_turno = $mm_turnos->id_turno;
-				$mm_turno_det->id_tramite = $id_tramite;
-				$mm_turno_det->tipo_doc = $request->tipo_doc;
-				$mm_turno_det->nro_doc = $request->nro_documento;
-				$mm_turno_det->apellido = strtoupper($request->apellido) ;
-				$mm_turno_det->nombre = strtoupper($request->nombre);
-				$mm_turno_det->domicilio_calle = $request->calle; 
-				$mm_turno_det->domicilio_nro = $request->numero; 
-				$mm_turno_det->domicilio_subnro = ""; 
-				$mm_turno_det->domicilio_piso = $request->piso; 
-				$mm_turno_det->domicilio_dpto = strtoupper($request->depto); 
-				$mm_turno_det->domicilio_mzna = ""; 
-				$mm_turno_det->telefono = $request->telefono; 
-				$mm_turno_det->email = $request->email; 
-				$mm_turno_det->Fecha_mov = date("Y-m-d H:i:s"); 
+
+				//busco si la persona existe en el sistema
+				$persona  = Persona::get_registro_dni(36738451);
+				if ($persona != null) {
+					$turno->id_persona = $persona->id;
+					
+				} else {
+					dd("no encontro");
+				}
+				$turno->save();
+				DB::commit();
+				dd("emma");
+				// $mm_turno_det = new mm_turno_det;
+				// $mm_turno_det->id_turno = $mm_turnos->id_turno;
+				// $mm_turno_det->id_tramite = $id_tramite;
+				// $mm_turno_det->tipo_doc = $request->tipo_doc;
+				// $mm_turno_det->nro_doc = $request->nro_documento;
+				// $mm_turno_det->apellido = strtoupper($request->apellido) ;
+				// $mm_turno_det->nombre = strtoupper($request->nombre);
+				// $mm_turno_det->domicilio_calle = $request->calle; 
+				// $mm_turno_det->domicilio_nro = $request->numero; 
+				// $mm_turno_det->domicilio_subnro = ""; 
+				// $mm_turno_det->domicilio_piso = $request->piso; 
+				// $mm_turno_det->domicilio_dpto = strtoupper($request->depto); 
+				// $mm_turno_det->domicilio_mzna = ""; 
+				// $mm_turno_det->telefono = $request->telefono; 
+				// $mm_turno_det->email = $request->email; 
+				// $mm_turno_det->Fecha_mov = date("Y-m-d H:i:s"); 
 				//$mm_turno_det->save();
 				  
-				if($mm_turno_det->save()) {
-					$comprobante = $mm_turno_det->id_comprobante;
-				}
+				// if($mm_turno_det->save()) {
+				// 	$comprobante = $mm_turno_det->id_comprobante;
+				// }
 
 
 				$precio = 0; //DB::select("SELECT * FROM tab_precios WHERE id_tramite = 1");	
 				
 				DB::commit();
+				dd("iria el PDF");
 				$error = "0";
 				// $dato = app()->call('App\Http\Controllers\boleta\BoletaController@invoice', [$comprobante, $request->nro_documento]);
 				// return ($dato);

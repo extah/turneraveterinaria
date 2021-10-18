@@ -94,23 +94,32 @@
                         <div class="circulo uno" id="numeral1"><h3>1</h3></div>
                         <h2 style="color: #183a68;"><u>Datos del propietario</u></h2>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="apellido" class="form-label"><b>Apellido</b></label>
                         <input type="text" class="form-control" id="apellido" name="apellido" placeholder="ingrese su apellido" required>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="nombre" class="form-label"><b>Nombre</b></label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="ingrese su nombre" required>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
+                        <label for="email" class="form-label"><b>Correo Electronico</b></label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="ingrese su correo electronico" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefono" class="form-label"><b>Celular</b></label>
+                        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="ingrese su numero de celular" required>
+                    </div>
+                    <div class="col-md-3">
                         <label for="edad" class="form-label"><b>Edad</b></label>
                         <input type="number" class="form-control" id="edad" name="edad" placeholder="ingrese su edad" required>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-3">
                         <label for="dni" class="form-label"><b>DNI</b></label>
                         <input type="number" class="form-control" id="dni" name="dni" placeholder="ingrese su dni" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label for="ciudad" class="form-label"><b>Ciudad</b></label>
                         <input type="text" class="form-control" id="ciudad" name="ciudad" value="Berisso" readonly>
                     </div>
@@ -129,7 +138,7 @@
                         <label for="calle" class="form-label"><b>Calle</b></label>
                         <input type="text" class="form-control" id="calle" name="calle" placeholder="ingrese su calle" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="numero" class="form-label"><b>Número Domicilio</b></label>
                         <input type="number" class="form-control" id="numero" name="numero" placeholder="ingrese su N° de domicilio" required>
                     </div>
@@ -137,7 +146,7 @@
                         <label for="barrio" class="form-label"><b>Barrio</b></label>
                         <input type="text" class="form-control" id="barrio" placeholder="ingrese su barrio" required>
                     </div> -->
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="manzana" class="form-label"><b>Manzana</b></label>
                         <input type="text" class="form-control" id="manzana" name="manzana" placeholder="ingrese su manzana" required>
                     </div>
