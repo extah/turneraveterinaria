@@ -722,21 +722,24 @@ class NuevoTurnoController extends Controller
 		$calle = $request->calle;
 		$numero = $request->numero;
 		$manzana = $request->manzana;
+		//animal
 		$name_especie_animal = $request->name_especie_animal;
-		$nom_animal = $request->nom_animal;
+		$nombre_animal = $request->nombre_animal;
 		$edad_animal = $request->edad_animal;
 		$name_sexo_animal = $request->name_seso_animal;
 		$vacuna_antirrabica = $request->vacuna_antirrabica;
 		$vacuna_sextuple = $request->vacuna_sextuple;
 		$castrado = $request->castrado;
+		//Brucelosis
 		$cruzo_animal_hembra = $request->cruzo_animal_hembra;
-		$preñada_animal = $request->preñada_animal;
-		$crias_animal = $request->crias_animal;
-		$problema_parto = $request->problema_parto;
+		$preñada_animal_hembra = $request->preñada_animal_hembra;
+		$crias_animal_hembra = $request->crias_animal_hembra;
+		$problema_parto_hembra = $request->problema_parto_hembra;
 		$cruzo_animal_macho = $request->cruzo_animal_macho;
 		$prenez_macho = $request->prenez_macho;
 		$inflamacion_macho = $request->inflamacion_macho;
-		$columna_animal = $request->columna_animal;
+		$columna_animal_ambos = $request->columna_animal_ambos;
+		//Leptospirosis
 		$criadero_animal = $request->criadero_animal;
 		$viajo_animal = $request->viajo_animal;
 		
@@ -761,13 +764,17 @@ class NuevoTurnoController extends Controller
 
 
 				//busco si la persona existe en el sistema
-				$persona  = Persona::get_registro_dni(36738451);
+				$persona  = Persona::get_registro_dni($dni);
 				if ($persona != null) {
 					$turno->id_persona = $persona->id;
+
+					$animal = Animal::get_registro_existe($dni, $);
 					
 				} else {
 					dd("no encontro");
 				}
+				
+
 				$turno->save();
 				DB::commit();
 				dd("emma");
